@@ -418,7 +418,7 @@ Phase 7  →  📄 Documentation (All SkillWallet documents)
 
 This project is created for **educational purposes** as part of the SkillWallet Data Analytics with Tableau module.
 
-Dataset: [UNESCO World Heritage Sites 2019](https://www.kaggle.com/datasets/ujwalkandi/unesco-world-heritage-sites) by Ujwal Kandi on Kaggle (CC BY 4.0)
+Dataset: [UNESCO World Heritage Sites 2019](https://www.kaggle.com/datasets/ujwalkandi/unesco-world-heritage-sites) 
 
 ---
 
@@ -426,6 +426,6 @@ Dataset: [UNESCO World Heritage Sites 2019](https://www.kaggle.com/datasets/ujwa
 
 **⭐ If you found this project helpful, please give it a star! ⭐**
 
-Made with ❤️ by Aditya Kumar Singh | SkillWallet — SmartBridge | July 2025
+Made with ❤️ by Aditya Kumar Singh | SkillWallet — SmartBridge | July 2026
 
 </div>
