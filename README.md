@@ -25,7 +25,6 @@
 - [📖 Tableau Story](#-tableau-story)
 - [🌐 Web Integration](#-web-integration)
 - [🔍 Key Findings](#-key-findings)
-- [📸 Screenshots](#-screenshots)
 - [👨‍💻 Author](#-author)
 - [📄 License](#-license)
 
@@ -361,19 +360,6 @@ if __name__ == "__main__":
 
 > **Finding 5 — Inscription Trends**  
 > 📈 Inscriptions peaked in **2000 (60 new sites)**; declining since, stabilizing at 15–25/year. Forecast stable through 2028
-
----
-
-## 📸 Screenshots
-
-### Dashboard 1 — UNESCO World Heritage Sites Overview
-![Dashboard 1](screenshots/dashboard1.png)
-
-### Dashboard 2 — UNESCO Danger Sites Overview  
-![Dashboard 2](screenshots/dashboard2.png)
-
-### Flask Web Application — Home Page
-![Flask App](screenshots/flask_app.png)
 
 ---
 
