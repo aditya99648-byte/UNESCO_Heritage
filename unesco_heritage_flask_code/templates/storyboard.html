@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block hero %}
+<div class="detail-hero">
+    <div class="detail-hero-inner">
+        <div class="detail-category">Narrative Analysis</div>
+        <h1 class="detail-title">The Storyboard</h1>
+        <p style="opacity: 0.8; max-width: 700px; font-size: 16px; line-height: 1.6;">Journey through the data in four narrative chapters, from understanding the global heritage landscape to examining threats and future projections.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div style="max-width: 900px; margin: 0 auto;">
+        {% for chapter in storyboard %}
+        <a href="/storyboard/{{ chapter.chapter }}" style="display: flex; gap: 40px; margin-bottom: 48px; text-decoration: none; color: inherit; background: var(--heritage-white); border-radius: 20px; border: 1px solid var(--heritage-border); overflow: hidden; transition: all 0.4s;" onmouseover="this.style.transform='translateX(8px)'; this.style.boxShadow='0 12px 40px rgba(26,107,92,0.1)'" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='none'">
+            <div style="background: linear-gradient(135deg, var(--heritage-teal) 0%, var(--heritage-green) 100%); color: white; padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 160px;">
+                <div style="font-family: 'Cormorant Garamond', serif; font-size: 64px; font-weight: 700; line-height: 1;">0{{ chapter.chapter }}</div>
+                <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-top: 8px; opacity: 0.8;">Chapter</div>
+            </div>
+            <div style="padding: 32px 32px 32px 0; flex: 1;">
+                <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--heritage-teal-dark); margin-bottom: 12px;">{{ chapter.title }}</h2>
+                <p style="font-size: 15px; color: var(--heritage-text-light); line-height: 1.7; margin-bottom: 16px;">{{ chapter.description }}</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    {% for dash_id in chapter.dashboards %}
+                    {% set dash = dashboards|selectattr('id', 'equalto', dash_id)|first %}
+                    {% if dash %}
+                    <span style="padding: 6px 14px; background: rgba(201, 162, 39, 0.1); color: var(--heritage-gold-dark); font-size: 12px; font-weight: 500; border-radius: 20px;">{{ dash.title }}</span>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block hero %}
+<div class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">✦ UNESCO World Heritage Convention</div>
+        <h1>{{ project.title }}</h1>
+        <p class="hero-subtitle">{{ project.subtitle }}</p>
+        <p class="hero-desc">{{ project.tagline }}. Explore interactive Tableau visualizations revealing the distribution, preservation, and future of our shared cultural and natural heritage across 168 countries.</p>
+        <div>
+            <a href="/dashboard" class="hero-btn">Explore Dashboards →</a>
+            <a href="/storyboard" class="hero-btn-secondary">View Storyboard</a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-number">{{ "{:,}".format(project.stats.total_sites) }}</div>
+            <div class="stat-label">World Heritage Sites</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">{{ project.stats.countries }}</div>
+            <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">{{ project.stats.regions }}</div>
+            <div class="stat-label">Regions</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">{{ "{:,}".format(project.stats.cultural) }}</div>
+            <div class="stat-label">Cultural Sites</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">{{ project.stats.natural }}</div>
+            <div class="stat-label">Natural Sites</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">{{ project.stats.endangered }}</div>
+            <div class="stat-label">Endangered</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<!-- Featured Dashboards -->
+<div class="content">
+    <div class="section-header">
+        <div class="section-label">Visualizations</div>
+        <h2 class="section-title">Featured Dashboards</h2>
+        <p class="section-subtitle">Interactive Tableau visualizations exploring UNESCO World Heritage Sites from multiple analytical perspectives</p>
+    </div>
+
+    <div class="card-grid">
+        {% for dash in dashboards[:6] %}
+        <a href="/dashboard/{{ dash.id }}" class="viz-card">
+            <img src="/static/images/{{ dash.image }}" alt="{{ dash.title }}" class="viz-card-image" loading="lazy">
+            <div class="viz-card-body">
+                <div class="viz-card-category">{{ dash.category }}</div>
+                <div class="viz-card-title">{{ dash.title }}</div>
+                <div class="viz-card-desc">{{ dash.description }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="/dashboard" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: var(--heritage-teal); color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 15px; transition: all 0.3s;" onmouseover="this.style.background='var(--heritage-teal-dark)'" onmouseout="this.style.background='var(--heritage-teal)'">
+            View All Dashboards →
+        </a>
+    </div>
+</div>
+
+<!-- Storyboard Preview -->
+<div style="background: var(--heritage-warm); padding: 60px 40px;">
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <div class="section-header">
+            <div class="section-label">Narrative</div>
+            <h2 class="section-title">The Storyboard</h2>
+            <p class="section-subtitle">Journey through the data in four chapters, from global overview to future projections</p>
+        </div>
+
+        <div class="card-grid-2">
+            {% for chapter in storyboard %}
+            <a href="/storyboard/{{ chapter.chapter }}" class="story-card">
+                <div class="story-chapter">0{{ chapter.chapter }}</div>
+                <div class="story-title">{{ chapter.title }}</div>
+                <div class="story-desc">{{ chapter.description }}</div>
+                <div class="story-meta">
+                    {% for dash_id in chapter.dashboards %}
+                    {% set dash = dashboards|selectattr('id', 'equalto', dash_id)|first %}
+                    {% if dash %}<span>{{ dash.title }}</span>{% endif %}
+                    {% endfor %}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- About Preview -->
+<div class="content">
+    <div style="background: linear-gradient(135deg, rgba(26, 107, 92, 0.04) 0%, rgba(201, 162, 39, 0.04) 100%); border-radius: 20px; padding: 60px; text-align: center; border: 1px solid var(--heritage-border);">
+        <div class="section-label">About the Project</div>
+        <h2 style="font-size: 36px; color: var(--heritage-teal-dark); margin-bottom: 16px;">Preserving Our Shared Heritage</h2>
+        <p style="font-size: 16px; color: var(--heritage-text-light); max-width: 700px; margin: 0 auto 32px; line-height: 1.7;">
+            Established in 1972, the World Heritage Convention represents humanity's commitment to protecting 
+            sites of outstanding universal value. This analysis uses Tableau to visualize patterns across 
+            1,121 sites, revealing insights about global heritage distribution, endangered sites, and future trends.
+        </p>
+        <a href="/about" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: var(--heritage-gold); color: var(--heritage-teal-dark); text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 15px; transition: all 0.3s;" onmouseover="this.style.background='var(--heritage-gold-light)'" onmouseout="this.style.background='var(--heritage-gold)'">
+            Learn More About the Project →
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block hero %}
+<div class="detail-hero">
+    <div class="detail-hero-inner">
+        <div class="detail-category">Visualizations</div>
+        <h1 class="detail-title">Dashboard Gallery</h1>
+        <p style="opacity: 0.8; max-width: 600px; font-size: 16px;">Explore all 10 interactive Tableau visualizations analyzing UNESCO World Heritage Sites from multiple perspectives</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Dashboards</button>
+        <button class="filter-btn" data-filter="Overview">Overview</button>
+        <button class="filter-btn" data-filter="Regional Analysis">Regional</button>
+        <button class="filter-btn" data-filter="Endangered Heritage">Endangered</button>
+        <button class="filter-btn" data-filter="Geographic Analysis">Geographic</button>
+        <button class="filter-btn" data-filter="Trend Analysis">Trends</button>
+        <button class="filter-btn" data-filter="Classification">Classification</button>
+    </div>
+
+    <!-- Dashboard Grid -->
+    <div class="card-grid" id="dashboard-grid">
+        {% for dash in dashboards %}
+        <a href="/dashboard/{{ dash.id }}" class="viz-card" data-category="{{ dash.category }}">
+            <img src="/static/images/{{ dash.image }}" alt="{{ dash.title }}" class="viz-card-image" loading="lazy">
+            <div class="viz-card-body">
+                <div class="viz-card-category">{{ dash.category }}</div>
+                <div class="viz-card-title">{{ dash.title }}</div>
+                <div class="viz-card-desc">{{ dash.description }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.viz-card[data-category]');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.style.display = 'block';
+                setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => { card.style.display = 'none'; }, 300);
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

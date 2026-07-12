@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Team - {{ project.title }}{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 24px;">
+    <h2 style="font-size: 24px; font-weight: 700; color: #111827;">Project Team</h2>
+    <p style="font-size: 14px; color: #6b7280; margin-top: 4px;">Meet the people behind this analysis</p>
+</div>
+
+<div class="team-grid">
+    <div class="team-card">
+        <div class="team-avatar">DA</div>
+        <div class="team-name">Data Analyst</div>
+        <div class="team-role">Lead Data Analyst</div>
+        <div style="margin-top: 12px; font-size: 13px; color: #6b7280; line-height: 1.6;">
+            Responsible for data cleaning, analysis, and insight generation from UNESCO datasets.
+        </div>
+    </div>
+    <div class="team-card">
+        <div class="team-avatar">TD</div>
+        <div class="team-name">Tableau Developer</div>
+        <div class="team-role">Visualization Specialist</div>
+        <div style="margin-top: 12px; font-size: 13px; color: #6b7280; line-height: 1.6;">
+            Designed and built all interactive Tableau dashboards and story points.
+        </div>
+    </div>
+    <div class="team-card">
+        <div class="team-avatar">PL</div>
+        <div class="team-name">Project Lead</div>
+        <div class="team-role">Project Manager</div>
+        <div style="margin-top: 12px; font-size: 13px; color: #6b7280; line-height: 1.6;">
+            Coordinated project timeline, deliverables, and stakeholder communication.
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 32px;">
+    <div class="card-header">
+        <span class="card-title">📋 Team Responsibilities</span>
+    </div>
+    <div class="card-body">
+        <div class="grid grid-3">
+            <div>
+                <h4 style="font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 8px;">Data Collection</h4>
+                <ul style="font-size: 13px; color: #6b7280; line-height: 1.8; padding-left: 16px;">
+                    <li>Gather UNESCO site data</li>
+                    <li>Validate data accuracy</li>
+                    <li>Clean and preprocess</li>
+                    <li>Structure for Tableau</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 8px;">Visualization</h4>
+                <ul style="font-size: 13px; color: #6b7280; line-height: 1.8; padding-left: 16px;">
+                    <li>Design dashboard layout</li>
+                    <li>Create interactive charts</li>
+                    <li>Build geographic maps</li>
+                    <li>Develop story points</li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 8px;">Deployment</h4>
+                <ul style="font-size: 13px; color: #6b7280; line-height: 1.8; padding-left: 16px;">
+                    <li>Publish to Tableau Public</li>
+                    <li>Embed in Flask UI</li>
+                    <li>Documentation</li>
+                    <li>Project demonstration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

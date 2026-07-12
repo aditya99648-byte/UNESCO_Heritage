@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block hero %}
+<div class="about-hero">
+    <h1>About the Project</h1>
+    <p>Understanding our world's most precious cultural and natural treasures through data</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="about-content">
+    <div class="about-text">
+        <p>
+            The <strong>UNESCO World Heritage Sites Analysis</strong> is a comprehensive data visualization project 
+            that explores the distribution, characteristics, and preservation status of the world's most significant 
+            cultural and natural landmarks. Using Tableau, this project transforms raw UNESCO data into compelling 
+            visual narratives that reveal patterns invisible in spreadsheets alone.
+        </p>
+
+        <div class="highlight-box">
+            <p>"Heritage is our legacy from the past, what we live with today, and what we pass on to future generations."</p>
+        </div>
+
+        <p>
+            The <strong>World Heritage Convention</strong>, adopted by UNESCO in 1972, represents a landmark 
+            international agreement to protect cultural and natural heritage of outstanding universal value. Today, 
+            the World Heritage List includes <strong>1,121 sites</strong> across <strong>168 countries</strong>, 
+            spanning five geographic regions and encompassing three distinct categories of heritage.
+        </p>
+
+        <h2 style="font-size: 32px; color: var(--heritage-teal-dark); margin: 48px 0 20px;">Project Objectives</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 40px;">
+            <div style="background: var(--heritage-white); padding: 24px; border-radius: 12px; border: 1px solid var(--heritage-border);">
+                <div style="font-size: 28px; margin-bottom: 10px;">🌍</div>
+                <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--heritage-teal-dark); margin-bottom: 8px;">Regional Distribution</h4>
+                <p style="font-size: 14px; color: var(--heritage-text-light); line-height: 1.6;">Analyze how heritage sites are distributed across UNESCO's five global regions and identify geographic patterns.</p>
+            </div>
+            <div style="background: var(--heritage-white); padding: 24px; border-radius: 12px; border: 1px solid var(--heritage-border);">
+                <div style="font-size: 28px; margin-bottom: 10px;">⚠️</div>
+                <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--heritage-teal-dark); margin-bottom: 8px;">Endangered Sites</h4>
+                <p style="font-size: 14px; color: var(--heritage-text-light); line-height: 1.6;">Identify and visualize sites at risk, understanding the threats they face and the urgency of conservation.</p>
+            </div>
+            <div style="background: var(--heritage-white); padding: 24px; border-radius: 12px; border: 1px solid var(--heritage-border);">
+                <div style="font-size: 28px; margin-bottom: 10px;">📊</div>
+                <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--heritage-teal-dark); margin-bottom: 8px;">Trend Analysis</h4>
+                <p style="font-size: 14px; color: var(--heritage-text-light); line-height: 1.6;">Examine historical inscription patterns and forecast future trends in heritage site designations.</p>
+            </div>
+            <div style="background: var(--heritage-white); padding: 24px; border-radius: 12px; border: 1px solid var(--heritage-border);">
+                <div style="font-size: 28px; margin-bottom: 10px;">🏛️</div>
+                <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--heritage-teal-dark); margin-bottom: 8px;">Categorization</h4>
+                <p style="font-size: 14px; color: var(--heritage-text-light); line-height: 1.6;">Explore the balance between cultural, natural, and mixed heritage sites across different regions.</p>
+            </div>
+        </div>
+
+        <h2 style="font-size: 32px; color: var(--heritage-teal-dark); margin: 48px 0 20px;">Data Sources</h2>
+
+        <p>
+            This analysis draws from multiple authoritative sources to ensure accuracy and comprehensiveness:
+        </p>
+
+        <ul style="margin: 20px 0; padding-left: 24px; line-height: 2; color: var(--heritage-text);">
+            <li><strong>UNESCO World Heritage Centre</strong> — Official database of all inscribed sites</li>
+            <li><strong>UNESCO Statistics</strong> — Country and regional designation data</li>
+            <li><strong>Mapbox / OpenStreetMap</strong> — Geographic visualization basemaps</li>
+            <li><strong>Historical Inscription Records</strong> — Data spanning 1972 to 2026</li>
+        </ul>
+
+        <h2 style="font-size: 32px; color: var(--heritage-teal-dark); margin: 48px 0 20px;">Methodology</h2>
+
+        <p>
+            The data was processed and analyzed using <strong>Tableau</strong>, a leading data visualization platform. 
+            Multiple chart types were employed to best represent different aspects of the data:
+        </p>
+
+        <div style="margin: 24px 0;">
+            <div style="display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start;">
+                <div style="width: 40px; height: 40px; background: rgba(26, 107, 92, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🗺️</div>
+                <div>
+                    <h4 style="font-size: 15px; font-weight: 600; color: var(--heritage-teal-dark); margin-bottom: 4px;">Geographic Maps</h4>
+                    <p style="font-size: 14px; color: var(--heritage-text-light);">Choropleth and point maps for regional and country-level analysis</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start;">
+                <div style="width: 40px; height: 40px; background: rgba(26, 107, 92, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">📈</div>
+                <div>
+                    <h4 style="font-size: 15px; font-weight: 600; color: var(--heritage-teal-dark); margin-bottom: 4px;">Time Series</h4>
+                    <p style="font-size: 14px; color: var(--heritage-text-light);">Line charts with forecasting for temporal trend analysis</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start;">
+                <div style="width: 40px; height: 40px; background: rgba(26, 107, 92, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🥧</div>
+                <div>
+                    <h4 style="font-size: 15px; font-weight: 600; color: var(--heritage-teal-dark); margin-bottom: 4px;">Proportional Charts</h4>
+                    <p style="font-size: 14px; color: var(--heritage-text-light);">Pie charts, treemaps, and bubble charts for composition analysis</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: flex-start;">
+                <div style="width: 40px; height: 40px; background: rgba(26, 107, 92, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">📊</div>
+                <div>
+                    <h4 style="font-size: 15px; font-weight: 600; color: var(--heritage-teal-dark); margin-bottom: 4px;">Bar & Dual-Axis</h4>
+                    <p style="font-size: 14px; color: var(--heritage-text-light);">Comparative bar charts and dual-axis combinations for complex metrics</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 48px;">
+            <p>"Our cultural and natural heritage are both irreplaceable sources of life and inspiration." — UNESCO</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Workspace - {{ project.title }}{% endblock %}
+
+{% block content %}
+<!-- Workspace Header -->
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <div>
+        <h2 style="font-size: 24px; font-weight: 700; color: #111827;">Workspace</h2>
+        <p style="font-size: 14px; color: #6b7280; margin-top: 4px;">All project dashboards, visualizations, and analysis documents</p>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <button style="padding: 8px 16px; border: 1px solid #d1d5db; background: white; border-radius: 8px; font-size: 13px; font-weight: 500; color: #374151; cursor: pointer;">
+            🔍 Filter
+        </button>
+        <button style="padding: 8px 16px; border: none; background: #1e3a8a; border-radius: 8px; font-size: 13px; font-weight: 500; color: white; cursor: pointer;">
+            + Add Item
+        </button>
+    </div>
+</div>
+
+<!-- Category Filter Tabs -->
+<div style="display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap;">
+    <button class="filter-tab active" data-filter="all" style="padding: 8px 18px; border: 1px solid #e5e7eb; background: #111827; color: white; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer;">All Items</button>
+    <button class="filter-tab" data-filter="Main Dashboard" style="padding: 8px 18px; border: 1px solid #e5e7eb; background: white; color: #374151; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer;">Main Dashboards</button>
+    <button class="filter-tab" data-filter="Regional Analysis" style="padding: 8px 18px; border: 1px solid #e5e7eb; background: white; color: #374151; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer;">Regional Analysis</button>
+    <button class="filter-tab" data-filter="Endangered Sites" style="padding: 8px 18px; border: 1px solid #e5e7eb; background: white; color: #374151; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer;">Endangered Sites</button>
+    <button class="filter-tab" data-filter="Geographic Analysis" style="padding: 8px 18px; border: 1px solid #e5e7eb; background: white; color: #374151; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer;">Geographic</button>
+    <button class="filter-tab" data-filter="Trend Analysis" style="padding: 8px 18px; border: 1px solid #e5e7eb; background: white; color: #374151; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer;">Trends</button>
+</div>
+
+<!-- Dashboards Grid -->
+<div class="grid grid-3" id="dashboards-grid">
+    {% for dash in dashboards %}
+    <a href="/dashboard/{{ dash.id }}" class="dashboard-card" data-category="{{ dash.category }}">
+        <img src="/static/images/{{ dash.image }}" alt="{{ dash.title }}" class="dashboard-card-image" loading="lazy">
+        <div class="dashboard-card-body">
+            <div class="dashboard-card-category">{{ dash.category }}</div>
+            <div class="dashboard-card-title">{{ dash.title }}</div>
+            <div class="dashboard-card-desc">{{ dash.description }}</div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+<!-- Publishing Section -->
+<div style="margin-top: 48px;">
+    <h2 class="section-title">🚀 Publishing</h2>
+    <div class="card">
+        <div class="card-body">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #e5e7eb;">
+                <div>
+                    <div style="font-size: 14px; font-weight: 500; color: #111827;">Dashboard and Story embed with UI With Flask</div>
+                    <div style="font-size: 12px; color: #6b7280; margin-top: 2px;">Published on Tableau Public • Embedded in Flask</div>
+                </div>
+                <span class="tag tag-blue">Published</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 0;">
+                <div>
+                    <div style="font-size: 14px; font-weight: 500; color: #111827;">Project Demonstration & Documentation</div>
+                    <div style="font-size: 12px; color: #6b7280; margin-top: 2px;">Documentation and walkthrough video</div>
+                </div>
+                <div class="progress-container" style="width: 200px;">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 50%;"></div>
+                    </div>
+                    <span class="progress-text">50%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Filter functionality
+const filterTabs = document.querySelectorAll('.filter-tab');
+const dashboardCards = document.querySelectorAll('.dashboard-card[data-category]');
+
+filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Update active tab
+        filterTabs.forEach(t => {
+            t.style.background = 'white';
+            t.style.color = '#374151';
+        });
+        tab.style.background = '#111827';
+        tab.style.color = 'white';
+
+        const filter = tab.dataset.filter;
+
+        dashboardCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 50);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

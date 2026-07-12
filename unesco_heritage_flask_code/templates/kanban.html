@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Kanban - {{ project.title }}{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 24px;">
+    <h2 style="font-size: 24px; font-weight: 700; color: #111827;">Project Kanban</h2>
+    <p style="font-size: 14px; color: #6b7280; margin-top: 4px;">Track project tasks and progress</p>
+</div>
+
+<div class="kanban-board">
+    <div class="kanban-column">
+        <div class="kanban-column-header">
+            <span>📋 To Do</span>
+            <span class="kanban-column-count">2</span>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Final Documentation</div>
+            <div style="font-size: 12px; color: #6b7280;">Write complete project report with findings</div>
+            <div style="margin-top: 8px;">
+                <span class="tag tag-yellow" style="font-size: 10px;">High Priority</span>
+            </div>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Video Demonstration</div>
+            <div style="font-size: 12px; color: #6b7280;">Record walkthrough of all dashboards</div>
+            <div style="margin-top: 8px;">
+                <span class="tag tag-blue" style="font-size: 10px;">Medium</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="kanban-column">
+        <div class="kanban-column-header">
+            <span>🔄 In Progress</span>
+            <span class="kanban-column-count">3</span>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Flask Integration</div>
+            <div style="font-size: 12px; color: #6b7280;">Embed Tableau dashboards in Flask UI</div>
+            <div style="margin-top: 8px;">
+                <span class="tag tag-yellow" style="font-size: 10px;">High Priority</span>
+            </div>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Danger Sites Analysis</div>
+            <div style="font-size: 12px; color: #6b7280;">Complete endangered sites dashboard</div>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Year Forecasting Model</div>
+            <div style="font-size: 12px; color: #6b7280;">Refine prediction accuracy</div>
+        </div>
+    </div>
+
+    <div class="kanban-column">
+        <div class="kanban-column-header">
+            <span>✅ Review</span>
+            <span class="kanban-column-count">2</span>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Site Count Dashboard</div>
+            <div style="font-size: 12px; color: #6b7280;">Pie chart per region - pending review</div>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Categories Analysis</div>
+            <div style="font-size: 12px; color: #6b7280;">Bar chart - Cultural/Natural/Mixed</div>
+        </div>
+    </div>
+
+    <div class="kanban-column">
+        <div class="kanban-column-header">
+            <span>🎉 Done</span>
+            <span class="kanban-column-count">4</span>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Data Collection</div>
+            <div style="font-size: 12px; color: #6b7280;">All UNESCO data gathered and cleaned</div>
+            <div style="margin-top: 8px;">
+                <span class="tag tag-green" style="font-size: 10px;">Complete</span>
+            </div>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Countries per Region</div>
+            <div style="font-size: 12px; color: #6b7280;">Bubble chart visualization</div>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Top 10 Map</div>
+            <div style="font-size: 12px; color: #6b7280;">Geographic visualization</div>
+        </div>
+        <div class="kanban-card">
+            <div style="font-weight: 600; margin-bottom: 6px;">Heritage Ended Map</div>
+            <div style="font-size: 12px; color: #6b7280;">Endangered sites visualization</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

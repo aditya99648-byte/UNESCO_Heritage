@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block hero %}
+<div class="detail-hero">
+    <div class="detail-hero-inner">
+        <a href="/dashboard" class="detail-back">← Back to Dashboard Gallery</a>
+        <div class="detail-category">{{ dashboard.category }}</div>
+        <h1 class="detail-title">{{ dashboard.title }}</h1>
+        <p style="opacity: 0.8; max-width: 700px; font-size: 16px; line-height: 1.6;">{{ dashboard.description }}</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <!-- Full Image -->
+    <div class="detail-image-wrapper">
+        <img src="/static/images/{{ dashboard.image }}" alt="{{ dashboard.title }}" class="detail-image">
+    </div>
+
+    <div class="card-grid-2">
+        <!-- Key Insights -->
+        <div class="detail-insights">
+            <h3>✦ Key Insights</h3>
+            <ul>
+                {% for insight in dashboard.insights %}
+                <li>{{ insight }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Dashboard Info -->
+        <div class="detail-insights">
+            <h3>📋 Dashboard Details</h3>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--heritage-stone); display: flex; justify-content: space-between;">
+                <span style="font-size: 14px; color: var(--heritage-text-light);">Category</span>
+                <span style="font-size: 14px; font-weight: 600; color: var(--heritage-teal-dark);">{{ dashboard.category }}</span>
+            </div>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--heritage-stone); display: flex; justify-content: space-between;">
+                <span style="font-size: 14px; color: var(--heritage-text-light);">Tool</span>
+                <span style="font-size: 14px; font-weight: 600; color: var(--heritage-teal-dark);">Tableau</span>
+            </div>
+            <div style="padding: 10px 0; border-bottom: 1px solid var(--heritage-stone); display: flex; justify-content: space-between;">
+                <span style="font-size: 14px; color: var(--heritage-text-light);">Created</span>
+                <span style="font-size: 14px; font-weight: 600; color: var(--heritage-teal-dark);">July 2026</span>
+            </div>
+            <div style="padding: 10px 0; display: flex; justify-content: space-between;">
+                <span style="font-size: 14px; color: var(--heritage-text-light);">Data Source</span>
+                <span style="font-size: 14px; font-weight: 600; color: var(--heritage-teal-dark);">UNESCO WHC</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Dashboards -->
+    {% if related %}
+    <div class="related-section">
+        <h2 class="related-title">Related Dashboards</h2>
+        <div class="card-grid-4">
+            {% for r in related %}
+            <a href="/dashboard/{{ r.id }}" class="viz-card">
+                <img src="/static/images/{{ r.image }}" alt="{{ r.title }}" class="viz-card-image" style="height: 140px;">
+                <div class="viz-card-body">
+                    <div class="viz-card-category">{{ r.category }}</div>
+                    <div class="viz-card-title" style="font-size: 18px;">{{ r.title }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
